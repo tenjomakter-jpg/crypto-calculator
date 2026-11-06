@@ -27,14 +27,12 @@
     <!-- AD SPACE 1: Top Header Leaderboard Banner -->
     <div class="max-w-4xl mx-auto my-4 text-center px-4">
         <div class="bg-slate-800/60 border border-dashed border-amber-500/50 p-3 rounded text-xs text-amber-400">
-            [<!-- BEGIN AADS AD UNIT 2461141 -->
-
-<div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
-          <iframe data-aa='2461141' src='//acceptable.a-ads.com/2461141/?size=Adaptive'
-                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
-        </div>
-
-<!-- END AADS AD UNIT 2461141 --> ]
+            <!-- BEGIN AADS AD UNIT 2461141 -->
+            <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+                <iframe data-aa='2461141' src='//acceptable.a-ads.com/2461141/?size=Adaptive'
+                    style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+            </div>
+            <!-- END AADS AD UNIT 2461141 -->
         </div>
     </div>
 
@@ -71,40 +69,40 @@
             <!-- AD SPACE 2: In-Form Native Ad -->
             <div class="my-4 text-center">
                 <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                    [<!-- BEGIN AADS AD UNIT 2461171 -->
-
-<div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
-          <iframe data-aa='2461171' src='//ad.a-ads.com/2461171/?size=320x100'
+                    <!-- BEGIN AADS AD UNIT 2461171 -->
+                    <div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
+                        <iframe data-aa='2461171' src='//ad.a-ads.com/2461171/?size=320x100'
                             style='border:0; padding:0; width:320px; height:100px; overflow:hidden;display: block;margin: auto'></iframe>
-        </div>
-
-<!-- END AADS AD UNIT 2461171 -->]
+                    </div>
+                    <!-- END AADS AD UNIT 2461171 -->
                 </div>
             </div>
 
             <button onclick="calcProfit()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate / হিসাব করুন</button>
             
-            <div id="p-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-sm text-slate-400">Net Profit/Loss (নিট লাভ/ক্ষতি):</span>
-                    <span id="p-net" class="text-lg font-bold"></span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-sm text-slate-400">Percentage (% শতাংশ):</span>
-                    <span id="p-pct" class="text-lg font-bold"></span>
+            <!-- Result Box: main container is NOT hidden, so AADS bot can detect the ad inside it -->
+            <div id="p-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700">
+                <!-- Inner calculation outputs are hidden/shown inside -->
+                <div id="p-output-content" class="hidden">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-slate-400">Net Profit/Loss (নিট লাভ/ক্ষতি):</span>
+                        <span id="p-net" class="text-lg font-bold"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-slate-400">Percentage (% শতাংশ):</span>
+                        <span id="p-pct" class="text-lg font-bold"></span>
+                    </div>
                 </div>
 
-                <!-- AD SPACE 3: Below Result Banner -->
+                <!-- AD SPACE 3: Below Result Banner (Always rendered in DOM) -->
                 <div class="mt-4 pt-3 border-t border-slate-800 text-center">
                     <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                        [<!-- BEGIN AADS AD UNIT 2461194 -->
-
-<div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
-          <iframe data-aa='2461194' src='//ad.a-ads.com/2461194/?size=320x100'
-                            style='border:0; padding:0; width:320px; height:100px; overflow:hidden;display: block;margin: auto'></iframe>
-        </div>
-
-<!-- END AADS AD UNIT 2461194 -->]
+                        <!-- BEGIN AADS AD UNIT 2461194 -->
+                        <div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
+                            <iframe data-aa='2461194' src='//ad.a-ads.com/2461194/?size=320x100'
+                                style='border:0; padding:0; width:320px; height:100px; overflow:hidden;display: block;margin: auto'></iframe>
+                        </div>
+                        <!-- END AADS AD UNIT 2461194 -->
                     </div>
                 </div>
             </div>
@@ -124,7 +122,6 @@
                 </div>
             </div>
 
-            <!-- In-Form Ad -->
             <div class="my-4 text-center">
                 <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                     [ Ad Space 2 - In-Form Native Ad ]
@@ -143,7 +140,6 @@
                     <span id="t-after" class="text-lg font-bold text-emerald-400"></span>
                 </div>
 
-                <!-- Below Result Ad -->
                 <div class="mt-4 pt-3 border-t border-slate-800 text-center">
                     <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                         [ Ad Space 3 - Below Result Ad ]
@@ -170,7 +166,6 @@
                 </div>
             </div>
 
-            <!-- In-Form Ad -->
             <div class="my-4 text-center">
                 <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                     [ Ad Space 2 - In-Form Native Ad ]
@@ -189,7 +184,6 @@
                     <span id="d-future" class="text-xl font-bold text-emerald-400"></span>
                 </div>
 
-                <!-- Below Result Ad -->
                 <div class="mt-4 pt-3 border-t border-slate-800 text-center">
                     <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                         [ Ad Space 3 - Below Result Ad ]
@@ -212,7 +206,6 @@
                 </div>
             </div>
 
-            <!-- In-Form Ad -->
             <div class="my-4 text-center">
                 <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                     [ Ad Space 2 - In-Form Native Ad ]
@@ -225,7 +218,6 @@
                 <span class="text-sm text-slate-400 block mb-1">Estimated Transaction Cost (আনুমানিক ফি):</span>
                 <span id="g-cost" class="text-2xl font-bold text-blue-400"></span>
 
-                <!-- Below Result Ad -->
                 <div class="mt-4 pt-3 border-t border-slate-800 text-center">
                     <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                         [ Ad Space 3 - Below Result Ad ]
@@ -237,28 +229,24 @@
         <!-- AD SPACE 4: Middle Mid-Page Banner -->
         <div class="my-8 text-center">
             <div class="bg-slate-800/60 border border-dashed border-amber-500/50 p-4 rounded text-xs text-amber-400">
-                [<!-- BEGIN AADS AD UNIT 2461168 -->
-
-<div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
-          <iframe data-aa='2461168' src='//ad.a-ads.com/2461168/?size=320x50'
-                            style='border:0; padding:0; width:320px; height:50px; overflow:hidden;display: block;margin: auto'></iframe>
-        </div>
-
-<!-- END AADS AD UNIT 2461168 --> ]
+                <!-- BEGIN AADS AD UNIT 2461168 -->
+                <div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
+                    <iframe data-aa='2461168' src='//ad.a-ads.com/2461168/?size=320x50'
+                        style='border:0; padding:0; width:320px; height:50px; overflow:hidden;display: block;margin: auto'></iframe>
+                </div>
+                <!-- END AADS AD UNIT 2461168 -->
             </div>
         </div>
 
         <!-- AD SPACE 5: Bottom Footer Banner -->
         <div class="mt-6 text-center">
             <div class="bg-slate-800/60 border border-dashed border-amber-500/50 p-4 rounded text-xs text-amber-400">
-                [<!-- BEGIN AADS AD UNIT 2461190 -->
-
-<div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
-          <iframe data-aa='2461190' src='//acceptable.a-ads.com/2461190/?size=Adaptive'
-                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
-        </div>
-
-<!-- END AADS AD UNIT 2461190 -->]
+                <!-- BEGIN AADS AD UNIT 2461190 -->
+                <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+                    <iframe data-aa='2461190' src='//acceptable.a-ads.com/2461190/?size=Adaptive'
+                        style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+                </div>
+                <!-- END AADS AD UNIT 2461190 -->
             </div>
         </div>
 
@@ -289,11 +277,12 @@
             const netProfit = totalSell - totalBuy;
             const pct = totalBuy > 0 ? (netProfit / totalBuy) * 100 : 0;
 
-            const resDiv = document.getElementById('p-result');
             const netSpan = document.getElementById('p-net');
             const pctSpan = document.getElementById('p-pct');
+            
+            // Show inner calculation results content
+            document.getElementById('p-output-content').classList.remove('hidden');
 
-            resDiv.classList.remove('hidden');
             netSpan.textContent = '$' + netProfit.toFixed(2);
             pctSpan.textContent = pct.toFixed(2) + '%';
 
