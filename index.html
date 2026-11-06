@@ -3,7 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoCalc Hub - Free Crypto Calculator & Utility Tools | ক্রিপ্টো ক্যালকুলেটর হাব</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>CryptoCalc Hub - Free Crypto Calculator, Tax & Gas Fee Tools | ক্রিপ্টো ক্যালকুলেটর হাব</title>
+    <meta name="title" content="CryptoCalc Hub - Free Crypto Calculator, Tax & Gas Fee Tools | ক্রিপ্টো ক্যালকুলেটর হাব">
+    <meta name="description" content="Free online crypto tools to calculate profit, loss, taxes, DCA long-term projections, and Ethereum gas fees. সেরা ফ্রি অনলাইন ক্রিপ্টো ক্যালকুলেটর এবং ট্যাক্স হিসাব করার টুল।">
+    <meta name="keywords" content="crypto tax calculator, crypto profit calculator, dca crypto calculator, gas fee converter, ক্রিপ্টো ক্যালকুলেটর, ক্রিপ্টো ট্যাক্স হিসাব, বাংলা ক্রিপ্টো টুল">
+    <meta name="author" content="CryptoCalc Hub">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://crypto-calculator-alpha.vercel.app/">
+    <meta property="og:title" content="CryptoCalc Hub - Free Crypto Calculator, Tax & Gas Fee Tools">
+    <meta property="og:description" content="Calculate crypto trading profit, loss, taxes, and gas fees instantly with our free online utility tools.">
+    <meta property="og:image" content="https://images.stockcake.com/public/c/6/c/c6cfed60-440a-496d-8a97-0b53421feab2/digital-finance-network-stockcake.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://crypto-calculator-alpha.vercel.app/">
+    <meta name="twitter:title" content="CryptoCalc Hub - Free Crypto Calculator, Tax & Gas Fee Tools">
+    <meta name="twitter:description" content="Calculate crypto trading profit, loss, taxes, and gas fees instantly with our free online utility tools.">
+    <meta name="twitter:image" content="https://images.stockcake.com/public/c/6/c/c6cfed60-440a-496d-8a97-0b53421feab2/digital-finance-network-stockcake.jpg">
+
+    <!-- Structured Data (JSON-LD Schema for Software Application / WebSite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CryptoCalc Hub",
+      "url": "https://crypto-calculator-alpha.vercel.app/",
+      "description": "Free online crypto tools to calculate profit, loss, taxes, DCA projections, and Ethereum gas fees.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
     <!-- Tailwind CSS (Styling) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -80,9 +120,7 @@
 
             <button onclick="calcProfit()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate / হিসাব করুন</button>
             
-            <!-- Result Box: main container is NOT hidden, so AADS bot can detect the ad inside it -->
             <div id="p-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700">
-                <!-- Inner calculation outputs are hidden/shown inside -->
                 <div id="p-output-content" class="hidden">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-sm text-slate-400">Net Profit/Loss (নিট লাভ/ক্ষতি):</span>
@@ -94,7 +132,7 @@
                     </div>
                 </div>
 
-                <!-- AD SPACE 3: Below Result Banner (Always rendered in DOM) -->
+                <!-- AD SPACE 3: Below Result Banner -->
                 <div class="mt-4 pt-3 border-t border-slate-800 text-center">
                     <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
                         <!-- BEGIN AADS AD UNIT 2461194 -->
@@ -122,12 +160,6 @@
                 </div>
             </div>
 
-            <div class="my-4 text-center">
-                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                    [ Ad Space 2 - In-Form Native Ad ]
-                </div>
-            </div>
-
             <button onclick="calcTax()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate Tax / ট্যাক্স হিসাব করুন</button>
             
             <div id="t-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden">
@@ -138,12 +170,6 @@
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm text-slate-400">Remaining Amount (হাতে থাকবে):</span>
                     <span id="t-after" class="text-lg font-bold text-emerald-400"></span>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
-                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                        [ Ad Space 3 - Below Result Ad ]
-                    </div>
                 </div>
             </div>
         </section>
@@ -166,12 +192,6 @@
                 </div>
             </div>
 
-            <div class="my-4 text-center">
-                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                    [ Ad Space 2 - In-Form Native Ad ]
-                </div>
-            </div>
-
             <button onclick="calcDCA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate Growth / প্রজেকশন দেখুন</button>
             
             <div id="d-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden">
@@ -182,12 +202,6 @@
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm text-slate-400">Future Value (ভবিষ্যৎ আনুমানিক মান):</span>
                     <span id="d-future" class="text-xl font-bold text-emerald-400"></span>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
-                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                        [ Ad Space 3 - Below Result Ad ]
-                    </div>
                 </div>
             </div>
         </section>
@@ -206,23 +220,11 @@
                 </div>
             </div>
 
-            <div class="my-4 text-center">
-                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                    [ Ad Space 2 - In-Form Native Ad ]
-                </div>
-            </div>
-
             <button onclick="calcGas()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Convert to USD / ডলারে রূপান্তর</button>
             
             <div id="g-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden text-center">
                 <span class="text-sm text-slate-400 block mb-1">Estimated Transaction Cost (আনুমানিক ফি):</span>
                 <span id="g-cost" class="text-2xl font-bold text-blue-400"></span>
-
-                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
-                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
-                        [ Ad Space 3 - Below Result Ad ]
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -280,7 +282,6 @@
             const netSpan = document.getElementById('p-net');
             const pctSpan = document.getElementById('p-pct');
             
-            // Show inner calculation results content
             document.getElementById('p-output-content').classList.remove('hidden');
 
             netSpan.textContent = '$' + netProfit.toFixed(2);
