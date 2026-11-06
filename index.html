@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoCalc Hub - Free Crypto Calculator & Utility Tools | ক্রিপ্টো ক্যালকুলেটর হাব</title>
+    <!-- Tailwind CSS (Styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .active-tab {
+            border-bottom: 2px solid #3b82f6;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <!-- Header Section -->
+    <header class="border-b border-slate-800 bg-slate-950 p-4 text-center">
+        <h1 class="text-xl md:text-3xl font-bold text-blue-400">
+            CryptoCalc Hub 
+            <span class="text-xs md:text-sm text-slate-400 block font-normal mt-1">ফ্রি ক্রিপ্টো প্রফিট, ট্যাক্স ও গ্যাস ফি ক্যালকুলেটর হাব</span>
+        </h1>
+    </header>
+
+    <!-- AD SPACE 1: Top Header Leaderboard Banner -->
+    <div class="max-w-4xl mx-auto my-4 text-center px-4">
+        <div class="bg-slate-800/60 border border-dashed border-amber-500/50 p-3 rounded text-xs text-amber-400">
+            [ Ad Space 1 - Top Header Banner (১ম এড কোডটি এখানে বসাবেন) ]
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <main class="max-w-4xl mx-auto px-4 pb-12">
+        
+        <!-- Navigation Tabs (Bilingual) -->
+        <div class="flex border-b border-slate-700 mb-6 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('profit')" id="tab-profit" class="tab-btn py-3 px-4 md:px-6 active-tab hover:text-blue-400 whitespace-nowrap">Profit / প্রফিট-লস</button>
+            <button onclick="switchTab('tax')" id="tab-tax" class="tab-btn py-3 px-4 md:px-6 text-slate-400 hover:text-blue-400 whitespace-nowrap">Tax / ট্যাক্স হিসাব</button>
+            <button onclick="switchTab('dca')" id="tab-dca" class="tab-btn py-3 px-4 md:px-6 text-slate-400 hover:text-blue-400 whitespace-nowrap">DCA / দীর্ঘমেয়াদী ইনভেস্ট</button>
+            <button onclick="switchTab('gas')" id="tab-gas" class="tab-btn py-3 px-4 md:px-6 text-slate-400 hover:text-blue-400 whitespace-nowrap">Gas Fee / গ্যাস ফি</button>
+        </div>
+
+        <!-- TAB 1: Profit & Loss Calculator -->
+        <section id="section-profit" class="tab-content bg-slate-800 p-5 md:p-6 rounded-xl border border-slate-700 shadow-lg">
+            <h2 class="text-lg md:text-xl font-bold mb-4 text-blue-300">Profit & Loss Calculator <span class="text-xs text-slate-400 font-normal block">প্রফিট ও লস ক্যালকুলেটর</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Buy Price ($ কেনার দাম)</label>
+                    <input type="number" id="p-buy" placeholder="e.g. 30000" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Sell Price ($ বেচার দাম)</label>
+                    <input type="number" id="p-sell" placeholder="e.g. 35000" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Coin Amount (পরিমাণ)</label>
+                    <input type="number" id="p-amount" placeholder="e.g. 0.5" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- AD SPACE 2: In-Form Native Ad -->
+            <div class="my-4 text-center">
+                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                    [ Ad Space 2 - In-Form Native Ad (২য় এড কোড বসাবেন) ]
+                </div>
+            </div>
+
+            <button onclick="calcProfit()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate / হিসাব করুন</button>
+            
+            <div id="p-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-slate-400">Net Profit/Loss (নিট লাভ/ক্ষতি):</span>
+                    <span id="p-net" class="text-lg font-bold"></span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-slate-400">Percentage (% শতাংশ):</span>
+                    <span id="p-pct" class="text-lg font-bold"></span>
+                </div>
+
+                <!-- AD SPACE 3: Below Result Banner -->
+                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
+                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                        [ Ad Space 3 - Below Result Ad (৩য় এড কোড বসাবেন) ]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: Crypto Tax Estimator -->
+        <section id="section-tax" class="tab-content bg-slate-800 p-5 md:p-6 rounded-xl border border-slate-700 shadow-lg hidden">
+            <h2 class="text-lg md:text-xl font-bold mb-4 text-blue-300">Crypto Tax Estimator <span class="text-xs text-slate-400 font-normal block">ক্রিপ্টো ট্যাক্স এস্টিমেটর</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Total Realized Profit ($ মোট লাভ)</label>
+                    <input type="number" id="t-profit" placeholder="e.g. 5000" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Tax Rate (% ট্যাক্স হার)</label>
+                    <input type="number" id="t-rate" placeholder="e.g. 15" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- In-Form Ad -->
+            <div class="my-4 text-center">
+                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                    [ Ad Space 2 - In-Form Native Ad ]
+                </div>
+            </div>
+
+            <button onclick="calcTax()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate Tax / ট্যাক্স হিসাব করুন</button>
+            
+            <div id="t-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-slate-400">Estimated Tax (আনুমানিক ট্যাক্স):</span>
+                    <span id="t-amount" class="text-lg font-bold text-rose-400"></span>
+                </div>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-slate-400">Remaining Amount (হাতে থাকবে):</span>
+                    <span id="t-after" class="text-lg font-bold text-emerald-400"></span>
+                </div>
+
+                <!-- Below Result Ad -->
+                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
+                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                        [ Ad Space 3 - Below Result Ad ]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: DCA / Compound Calculator -->
+        <section id="section-dca" class="tab-content bg-slate-800 p-5 md:p-6 rounded-xl border border-slate-700 shadow-lg hidden">
+            <h2 class="text-lg md:text-xl font-bold mb-4 text-blue-300">DCA / Long-term Projection <span class="text-xs text-slate-400 font-normal block">ডিসিএ / দীর্ঘমেয়াদী প্রজেকশন</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Monthly Investment ($ মাসিক জমা)</label>
+                    <input type="number" id="d-monthly" placeholder="e.g. 100" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Annual Return Rate (% বার্ষিক বৃদ্ধি)</label>
+                    <input type="number" id="d-rate" placeholder="e.g. 12" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Time Period (Years সময়কাল)</label>
+                    <input type="number" id="d-years" placeholder="e.g. 5" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- In-Form Ad -->
+            <div class="my-4 text-center">
+                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                    [ Ad Space 2 - In-Form Native Ad ]
+                </div>
+            </div>
+
+            <button onclick="calcDCA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Calculate Growth / প্রজেকশন দেখুন</button>
+            
+            <div id="d-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-slate-400">Total Invested (মোট পকেট থেকে দেওয়া):</span>
+                    <span id="d-invested" class="text-base text-slate-200"></span>
+                </div>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-slate-400">Future Value (ভবিষ্যৎ আনুমানিক মান):</span>
+                    <span id="d-future" class="text-xl font-bold text-emerald-400"></span>
+                </div>
+
+                <!-- Below Result Ad -->
+                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
+                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                        [ Ad Space 3 - Below Result Ad ]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: Gas Fee Calculator -->
+        <section id="section-gas" class="tab-content bg-slate-800 p-5 md:p-6 rounded-xl border border-slate-700 shadow-lg hidden">
+            <h2 class="text-lg md:text-xl font-bold mb-4 text-blue-300">Gwei to USD Converter <span class="text-xs text-slate-400 font-normal block">ইথেরিয়াম গ্যাস ফি কনভার্টার</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Gas Fee (Gwei গ্যাস ফি)</label>
+                    <input type="number" id="g-gwei" placeholder="e.g. 20" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">ETH Price ($ ইথেরিয়ামের দাম)</label>
+                    <input type="number" id="g-eth" placeholder="e.g. 3000" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- In-Form Ad -->
+            <div class="my-4 text-center">
+                <div class="bg-slate-900/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                    [ Ad Space 2 - In-Form Native Ad ]
+                </div>
+            </div>
+
+            <button onclick="calcGas()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded transition">Convert to USD / ডলারে রূপান্তর</button>
+            
+            <div id="g-result" class="mt-6 p-4 rounded bg-slate-900 border border-slate-700 hidden text-center">
+                <span class="text-sm text-slate-400 block mb-1">Estimated Transaction Cost (আনুমানিক ফি):</span>
+                <span id="g-cost" class="text-2xl font-bold text-blue-400"></span>
+
+                <!-- Below Result Ad -->
+                <div class="mt-4 pt-3 border-t border-slate-800 text-center">
+                    <div class="bg-slate-800/80 border border-dashed border-amber-500/50 p-2 rounded text-xs text-amber-400">
+                        [ Ad Space 3 - Below Result Ad ]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD SPACE 4: Middle Mid-Page Banner -->
+        <div class="my-8 text-center">
+            <div class="bg-slate-800/60 border border-dashed border-amber-500/50 p-4 rounded text-xs text-amber-400">
+                [ Ad Space 4 - Mid-Page Responsive Banner (৪র্থ এড কোড বসাবেন) ]
+            </div>
+        </div>
+
+        <!-- AD SPACE 5: Bottom Footer Banner -->
+        <div class="mt-6 text-center">
+            <div class="bg-slate-800/60 border border-dashed border-amber-500/50 p-4 rounded text-xs text-amber-400">
+                [ Ad Space 5 - Bottom Footer Banner (৫ম এড কোড বসাবেন) ]
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript Calculation Logic -->
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active-tab');
+                el.classList.add('text-slate-400');
+            });
+
+            document.getElementById('section-' + tabName).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.add('active-tab');
+            activeBtn.classList.remove('text-slate-400');
+        }
+
+        function calcProfit() {
+            const buy = parseFloat(document.getElementById('p-buy').value) || 0;
+            const sell = parseFloat(document.getElementById('p-sell').value) || 0;
+            const amount = parseFloat(document.getElementById('p-amount').value) || 0;
+
+            const totalBuy = buy * amount;
+            const totalSell = sell * amount;
+            const netProfit = totalSell - totalBuy;
+            const pct = totalBuy > 0 ? (netProfit / totalBuy) * 100 : 0;
+
+            const resDiv = document.getElementById('p-result');
+            const netSpan = document.getElementById('p-net');
+            const pctSpan = document.getElementById('p-pct');
+
+            resDiv.classList.remove('hidden');
+            netSpan.textContent = '$' + netProfit.toFixed(2);
+            pctSpan.textContent = pct.toFixed(2) + '%';
+
+            if (netProfit >= 0) {
+                netSpan.className = 'text-lg font-bold text-emerald-400';
+                pctSpan.className = 'text-lg font-bold text-emerald-400';
+            } else {
+                netSpan.className = 'text-lg font-bold text-rose-400';
+                pctSpan.className = 'text-lg font-bold text-rose-400';
+            }
+        }
+
+        function calcTax() {
+            const profit = parseFloat(document.getElementById('t-profit').value) || 0;
+            const rate = parseFloat(document.getElementById('t-rate').value) || 0;
+
+            const taxAmount = profit > 0 ? (profit * rate) / 100 : 0;
+            const remaining = profit - taxAmount;
+
+            document.getElementById('t-result').classList.remove('hidden');
+            document.getElementById('t-amount').textContent = '$' + taxAmount.toFixed(2);
+            document.getElementById('t-after').textContent = '$' + remaining.toFixed(2);
+        }
+
+        function calcDCA() {
+            const monthly = parseFloat(document.getElementById('d-monthly').value) || 0;
+            const annualRate = parseFloat(document.getElementById('d-rate').value) || 0;
+            const years = parseFloat(document.getElementById('d-years').value) || 0;
+
+            const months = years * 12;
+            const monthlyRate = annualRate / 100 / 12;
+            
+            let totalValue = 0;
+            for (let i = 0; i < months; i++) {
+                totalValue = (totalValue + monthly) * (1 + monthlyRate);
+            }
+
+            const totalInvested = monthly * months;
+
+            document.getElementById('d-result').classList.remove('hidden');
+            document.getElementById('d-invested').textContent = '$' + totalInvested.toFixed(2);
+            document.getElementById('d-future').textContent = '$' + totalValue.toFixed(2);
+        }
+
+        function calcGas() {
+            const gwei = parseFloat(document.getElementById('g-gwei').value) || 0;
+            const ethPrice = parseFloat(document.getElementById('g-eth').value) || 0;
+
+            const ethCost = (gwei * 21000) / 1000000000;
+            const usdCost = ethCost * ethPrice;
+
+            document.getElementById('g-result').classList.remove('hidden');
+            document.getElementById('g-cost').textContent = '$' + usdCost.toFixed(4) + ' USD';
+        }
+    </script>
+</body>
+</html>
